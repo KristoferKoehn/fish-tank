@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://wtrkk30ingsw"]
+
+[ext_resource type="PackedScene" uid="uid://dy28ipyne1erj" path="res://fish-tank/tank/Tank.tscn" id="1_08ylb"]
+[ext_resource type="Script" uid="uid://b0h5xtb6cghmj" path="res://test_scene/test_scene.gd" id="1_mjrkt"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mjrkt"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_73bm2"]
+sky_material = SubResource("ProceduralSkyMaterial_mjrkt")
+
+[sub_resource type="Environment" id="Environment_aion5"]
+background_mode = 2
+sky = SubResource("Sky_73bm2")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="TestScene" type="Node3D" node_paths=PackedStringArray("tank", "vbox")]
+script = ExtResource("1_mjrkt")
+tank = NodePath("Tank")
+vbox = NodePath("Control/Panel/MarginContainer/VBoxContainer")
+
+[node name="Tank" parent="." instance=ExtResource("1_08ylb")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aion5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.94241405, 0.1428447, -0.30240887, 0, 0.90420187, 0.4271054, 0.3344484, -0.4025101, 0.85213256, -0.3117718, 0.8058109, 1.0720545)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 69.0
+offset_right = 279.0
+offset_bottom = 380.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer"]
+layout_mode = 2

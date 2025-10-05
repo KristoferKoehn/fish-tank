@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PlantData" load_steps=2 format=3 uid="uid://canvng4yi183s"]
+
+[ext_resource type="Script" uid="uid://cmbnyyto7gvdn" path="res://fish-tank/resources/plant_data.gd" id="1_evlyi"]
+
+[resource]
+script = ExtResource("1_evlyi")
+plant_stages = Array[String](["res://fish-tank/assets/models/plants/monstera_plant_small.obj", "res://fish-tank/assets/models/plants/monstera_plant_medium.obj", "res://fish-tank/assets/models/plants/monstera_plant_large.obj"])
+stage_nutrients = Array[Dictionary]([{
+"green": 0.5
+}, {}, {
+"green": 0.5
+}])
+stages = 3
+metadata/_custom_type_script = "uid://cmbnyyto7gvdn"

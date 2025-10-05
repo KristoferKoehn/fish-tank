@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy28ipyne1erj"]
+
+[ext_resource type="Material" uid="uid://c4bwjjqoqx18l" path="res://fish-tank/assets/materials/sand_shader.tres" id="1_hkecg"]
+[ext_resource type="Script" uid="uid://b8qyc62ttpo0o" path="res://fish-tank/tank/tank.gd" id="1_y64u1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5ki5d"]
+flip_faces = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_hf4ja"]
+resource_local_to_scene = true
+material = ExtResource("1_hkecg")
+subdivide_width = 16
+subdivide_depth = 16
+orientation = 1
+
+[node name="Tank" type="Node3D"]
+script = ExtResource("1_y64u1")
+left = "left"
+right = "right"
+up = "up"
+down = "down"
+accept = "accept"
+cancel = "cancel"
+rotate_cw = "rotate_cw"
+rotate_ccw = "rotate_ccw"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40346345, 0)
+mesh = SubResource("BoxMesh_5ki5d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023507029, 0)
+mesh = SubResource("QuadMesh_hf4ja")
