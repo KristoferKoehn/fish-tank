@@ -1,10 +1,8 @@
 extends Node3D
 
-@export
-var tank : Tank 
-@export
-var vbox : VBoxContainer
-
+@export var tank : Tank 
+@export var vbox : VBoxContainer
+@export var textbox : TextEdit
 
 func _ready():
 	var dir : String = "res://fish-tank/PlantTypes/"
@@ -18,6 +16,8 @@ func _ready():
 		)
 		vbox.add_child(b)
 
+func _process(_delta):
+	read_plant_data()
 
 static func get_all_files(path: String, file_ext := "", files : Array[String] = []) -> Array[String]:
 	var dir : = DirAccess.open(path)
@@ -44,3 +44,20 @@ static func get_all_files(path: String, file_ext := "", files : Array[String] = 
 	else:
 		print("[get_all_files()] An error occurred when trying to access %s." % path)
 	return files
+
+func read_plant_data() -> void:
+	var text : String = ""
+	var i : int = 0
+
+	
+	for plant : Plant in tank.plants:
+		var current_stage = plant.get_stage_index(plant.ticks_elapsed, plant.stage_ticks)
+		text += "plant %d current stage: %d \n" % [i, current_stage]
+		text += "data file: %s \n" % plant.plant_data_file
+		text += "quality: %s \n" % plant.quality
+		
+		text += "nutrient ranking\n"
+		for nut in plant.nutrient_ranking[current_stage]:
+			text += " -> %s : %f \n" % [nut, plant.nutrient_ranking[current_stage][nut]]
+
+	textbox.text = text

@@ -38,8 +38,6 @@ func _tick() -> void:
 		#plant.get_nutrient_environment(tank_nutrient_environment) <- accumulate environment data
 		pass
 
-
-
 	for plant in plants:		
 		#plant.tick(tank_nutrient_environment) <- tick with environment
 		pass
@@ -67,10 +65,10 @@ func _process(delta):
 		mat.stencil_color = Color.YELLOW_GREEN
 
 		if Input.is_action_just_pressed(accept):
+			plants.append(current_placing)
 			mat.stencil_mode = BaseMaterial3D.STENCIL_MODE_DISABLED
 			mat.next_pass = null
 			current_placing = null
-			plants.append(current_placing)
 		
 		if Input.is_action_just_pressed(cancel):
 			current_placing.queue_free()

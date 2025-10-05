@@ -16,10 +16,11 @@ sky = SubResource("Sky_73bm2")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="TestScene" type="Node3D" node_paths=PackedStringArray("tank", "vbox")]
+[node name="TestScene" type="Node3D" node_paths=PackedStringArray("tank", "vbox", "textbox")]
 script = ExtResource("1_mjrkt")
 tank = NodePath("Tank")
 vbox = NodePath("Control/Panel/MarginContainer/VBoxContainer")
+textbox = NodePath("Control/Panel2/MarginContainer/TextEdit")
 
 [node name="Tank" parent="." instance=ExtResource("1_08ylb")]
 
@@ -62,3 +63,26 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer"]
 layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 789.0
+offset_top = 54.0
+offset_right = 1092.0
+offset_bottom = 376.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="TextEdit" type="TextEdit" parent="Control/Panel2/MarginContainer"]
+layout_mode = 2
+editable = false

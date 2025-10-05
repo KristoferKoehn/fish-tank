@@ -6,3 +6,4 @@ class_name PlantSave
 @export var quality : float = 0
 @export var position : Vector3 
 @export var rotation : Vector3
+@export var applied_nutrients : Dictionary[String,float]

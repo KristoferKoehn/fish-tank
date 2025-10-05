@@ -5,10 +5,20 @@
 [resource]
 script = ExtResource("1_evlyi")
 plant_stages = Array[String](["res://fish-tank/assets/models/plants/monstera_plant_small.obj", "res://fish-tank/assets/models/plants/monstera_plant_medium.obj", "res://fish-tank/assets/models/plants/monstera_plant_large.obj"])
+stage_ticks = Array[int]([1, 1, 1])
 stage_nutrients = Array[Dictionary]([{
-"green": 0.5
-}, {}, {
-"green": 0.5
+"Green": 0.6
+}, {
+"Green": 0.95
+}, {
+"Blue": 0.75
+}])
+environment_nutrient = Array[Dictionary]([{
+"env_Monstera": 0.6
+}, {
+"env_Monstera": 0.85
+}, {
+"env_Monstera": 1.0
 }])
 stages = 3
 metadata/_custom_type_script = "uid://cmbnyyto7gvdn"

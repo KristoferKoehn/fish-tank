@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="NutrientPaste" load_steps=2 format=3 uid="uid://x2eh15xmnhs1"]
+
+[ext_resource type="Script" uid="uid://k384hmam7c6x" path="res://fish-tank/resources/nutrient_paste.gd" id="1_p4c7h"]
+
+[resource]
+script = ExtResource("1_p4c7h")
+color = Color(1, 0, 0, 1)
+metadata/_custom_type_script = "uid://k384hmam7c6x"

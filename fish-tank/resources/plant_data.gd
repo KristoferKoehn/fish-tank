@@ -2,12 +2,10 @@
 extends Resource
 class_name PlantData
 
-@export_storage
-var plant_stages : Array[String] = []
-@export_storage
-var stage_ticks : Array[int] = []
-@export_storage
-var stage_nutrients : Array[Dictionary] = []
+@export_storage var plant_stages : Array[String] = []
+@export_storage var stage_ticks : Array[int] = []
+@export_storage var stage_nutrients : Array[Dictionary] = []
+@export_storage var environment_nutrient : Array[Dictionary] = []
 
 @export_range(0, 40, 1) var stages : int = 1 :
 	set(value):
@@ -15,8 +13,12 @@ var stage_nutrients : Array[Dictionary] = []
 		while plant_stages.size() > stages:
 			plant_stages.pop_back()
 			stage_nutrients.pop_back()
+			environment_nutrient.pop_back()
+			stage_ticks.pop_back()
 		while plant_stages.size() < stages:
 			plant_stages.append("<null>")
+			stage_ticks.append(1)
+			environment_nutrient.append({})
 			stage_nutrients.append({})
 		notify_property_list_changed()
 
@@ -27,9 +29,14 @@ func _get_property_list() -> Array[Dictionary]:
 	for i in plant_stages.size():
 		properties.append(add_subgroup("Stage %s" % i)) 
 		properties.append(add_property_enum_from_dir("plant_model %s" % i, TYPE_STRING, PROPERTY_USAGE_EDITOR, PROPERTY_HINT_ENUM, "res://fish-tank/assets/models/", ".obj"))
-		properties.append(add_property("ticks %s" % i, TYPE_INT, PROPERTY_USAGE_EDITOR, PROPERTY_HINT_RANGE, "1,50"))
-		var dict_enum_string : String = "blue,green,red,yellow,purple"
+		properties.append(add_property("stage_ticks %s" % i, TYPE_INT, PROPERTY_USAGE_EDITOR, PROPERTY_HINT_RANGE, "1,50"))
+		var dict_enum_string : String = ""
+		var dir = "res://fish-tank/NutrientTypes/"
+		var files : Array[String] = get_all_files(dir, ".tres")
+		for file in files:
+			dict_enum_string += file.replace(dir, "").replace(".tres", "") + ","
 		properties.append(add_property("nutrient_ranking %s" % i, TYPE_DICTIONARY, PROPERTY_USAGE_EDITOR, PROPERTY_HINT_TYPE_STRING, "%d/%d:%s;%d/%d:0,1,0.05" % [TYPE_STRING, PROPERTY_HINT_ENUM, dict_enum_string, TYPE_FLOAT, PROPERTY_HINT_RANGE]))
+		properties.append(add_property("environment_nutrient %s" % i, TYPE_DICTIONARY, PROPERTY_USAGE_EDITOR, PROPERTY_HINT_TYPE_STRING, "%d/%d:%s;%d/%d:0,1,0.05" % [TYPE_STRING, PROPERTY_HINT_ENUM, dict_enum_string, TYPE_FLOAT, PROPERTY_HINT_RANGE]))
 
 	return properties
 
@@ -44,6 +51,16 @@ func _get(property):
 		if index > plant_stages.size():
 			return null
 		return stage_nutrients[index]
+	if property.begins_with("environment_nutrient"):
+		var index = property.get_slice(" ", 1).to_int()
+		if index > plant_stages.size():
+			return null
+		return environment_nutrient[index]
+	if property.begins_with("stage_ticks"):
+		var index = property.get_slice(" ", 1).to_int()
+		if index > stage_ticks.size():
+			return null
+		return stage_ticks[index]
 
 func _set(property, value):
 	if property.begins_with("plant_model"):
@@ -58,7 +75,19 @@ func _set(property, value):
 		return true
 	if property.begins_with("nutrient_ranking"):
 		var index = property.get_slice(" ", 1).to_int()
-		stage_nutrients[index].assign(value);
+		stage_nutrients[index].assign(value)
+		print("%s: %s with list at %s " % [property, value, stage_nutrients.size()])
+		notify_property_list_changed()
+		return true
+	if property.begins_with("environment_nutrient"):
+		var index = property.get_slice(" ", 1).to_int()
+		environment_nutrient[index].assign(value)
+		print("%s: %s with list at %s " % [property, value, stage_nutrients.size()])
+		notify_property_list_changed()
+		return true
+	if property.begins_with("stage_ticks"):
+		var index = property.get_slice(" ", 1).to_int()
+		stage_ticks[index] = value
 		print("%s: %s with list at %s " % [property, value, stage_nutrients.size()])
 		notify_property_list_changed()
 		return true
