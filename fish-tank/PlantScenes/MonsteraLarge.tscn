@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmdx2qg8r7yko"]
+
+[ext_resource type="ArrayMesh" uid="uid://dturna17ifbgk" path="res://fish-tank/assets/models/plants/monstera_plant_large.obj" id="1_osea1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yywxp"]
+radius = 0.205
+
+[node name="MonsteraLarge" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_yywxp")
+
+[node name="MonsteraPlantLarge" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = ExtResource("1_osea1")

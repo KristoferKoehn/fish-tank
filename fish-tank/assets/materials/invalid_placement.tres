@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bn7266o2w3nvl"]
+
+[ext_resource type="Shader" uid="uid://cbj6mii4jxujl" path="res://fish-tank/assets/materials/invalid_placement.gdshader" id="1_8hayq"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8hayq")
+shader_parameter/albedo_alpha = 0.710000033725
+shader_parameter/tint_color = Color(1, 0, 0, 1)
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_power = 0.5
+shader_parameter/edge_size = 1.0
+shader_parameter/edge_intensity = 0.8
+shader_parameter/scanline_tint = Color(1, 0.5, 0, 1)
+shader_parameter/scanline_intensity = 1.0
+shader_parameter/scanline_density = 5.0
+shader_parameter/scanline_thickness = 1.0
+shader_parameter/scanline_spacing = 1.0
+shader_parameter/scanline_angle = 0.3590000170525
+shader_parameter/scanline_speed = 0.2
+shader_parameter/enable_glitch = true
+shader_parameter/glitch_intensity = 0.5
+shader_parameter/shake_power = 0.0790000037525
+shader_parameter/shake_rate = 0.5
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.5

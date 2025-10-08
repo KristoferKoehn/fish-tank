@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_af1sg")
 color = Color(0, 0, 1, 1)
+price = 5
 metadata/_custom_type_script = "uid://k384hmam7c6x"

@@ -16,11 +16,9 @@ sky = SubResource("Sky_73bm2")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="TestScene" type="Node3D" node_paths=PackedStringArray("tank", "vbox", "textbox")]
+[node name="TestScene" type="Node3D" node_paths=PackedStringArray("tank")]
 script = ExtResource("1_mjrkt")
 tank = NodePath("Tank")
-vbox = NodePath("Control/Panel/MarginContainer/VBoxContainer")
-textbox = NodePath("Control/Panel2/MarginContainer/TextEdit")
 
 [node name="Tank" parent="." instance=ExtResource("1_08ylb")]
 
@@ -30,59 +28,7 @@ environment = SubResource("Environment_aion5")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
+shadow_reverse_cull_face = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.94241405, 0.1428447, -0.30240887, 0, 0.90420187, 0.4271054, 0.3344484, -0.4025101, 0.85213256, -0.3117718, 0.8058109, 1.0720545)
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="Control"]
-layout_mode = 0
-offset_left = 71.0
-offset_top = 69.0
-offset_right = 279.0
-offset_bottom = 380.0
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer"]
-layout_mode = 2
-
-[node name="Panel2" type="Panel" parent="Control"]
-layout_mode = 0
-offset_left = 789.0
-offset_top = 54.0
-offset_right = 1092.0
-offset_bottom = 376.0
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/Panel2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 3
-
-[node name="TextEdit" type="TextEdit" parent="Control/Panel2/MarginContainer"]
-layout_mode = 2
-editable = false
+transform = Transform3D(0.94241405, 0.1428447, -0.30240887, 0, 0.90420187, 0.4271054, 0.3344484, -0.4025101, 0.85213256, -0.6872868, 0.8058109, 1.2700014)

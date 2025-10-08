@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://vcm2ckvy40nn"]
+
+[ext_resource type="ArrayMesh" uid="uid://byimrmyeqftbu" path="res://fish-tank/assets/models/plants/monstera_plant_medium.obj" id="1_mhyp0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yywxp"]
+
+[node name="MonsteraMedium" type="Node3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_yywxp")
+
+[node name="MonsteraPlantMedium" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_mhyp0")
+skeleton = NodePath("../Area3D")

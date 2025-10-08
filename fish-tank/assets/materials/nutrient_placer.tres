@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://vctrufnm6tlt"]
+
+[ext_resource type="Shader" uid="uid://i2g0on6aq5ls" path="res://fish-tank/assets/materials/nutrient_placer.gdshader" id="1_uxnsr"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_uxnsr")

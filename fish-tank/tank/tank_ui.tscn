@@ -1,0 +1,170 @@
+[gd_scene load_steps=2 format=3 uid="uid://38vdg1yl1w5h"]
+
+[ext_resource type="Script" uid="uid://dmtog27agkoih" path="res://fish-tank/tank/tank_ui.gd" id="1_55oae"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("plant_store", "widget_store", "nutrient_store", "plant_list", "textbox", "money_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_55oae")
+plant_store = NodePath("Panel/MarginContainer/VBoxContainer/TabContainer/Shop/TabContainer/Plants")
+widget_store = NodePath("Panel/MarginContainer/VBoxContainer/TabContainer/Shop/TabContainer/Widgets")
+nutrient_store = NodePath("Panel/MarginContainer/VBoxContainer/TabContainer/Shop/TabContainer/Nutrients")
+plant_list = NodePath("Panel/MarginContainer/VBoxContainer/TabContainer/Plants")
+textbox = NodePath("Panel2/MarginContainer/ScrollContainer/TextEdit")
+money_label = NodePath("Panel/MarginContainer/VBoxContainer/HBoxContainer/MoneyLabel")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.027
+anchor_top = 0.051000003
+anchor_right = 0.39600003
+anchor_bottom = 0.531
+offset_left = -0.10400009
+offset_top = -0.048000336
+offset_right = -0.1920166
+offset_bottom = 108.91199
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MoneyLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " 💴shittskie"
+
+[node name="TabContainer" type="TabContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Shop" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="TabContainer" type="TabContainer" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Shop"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Plants" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Shop/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Nutrients" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Shop/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Widgets" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TabContainer/Shop/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Plants" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 789.0
+offset_top = 54.0
+offset_right = 1092.0
+offset_bottom = 376.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="Panel2/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 10
+editable = false
+scroll_smooth = true
+
+[node name="Panel3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 462.0
+offset_right = 898.0
+offset_bottom = 544.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel3/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SaveButton" type="Button" parent="Panel3/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "save"
+
+[node name="LoadButton" type="Button" parent="Panel3/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "load"
+
+[node name="DeleteButton" type="Button" parent="Panel3/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Del"
+
+[node name="TickButton" type="Button" parent="Panel3/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "tick
+"
+
+[connection signal="pressed" from="Panel3/MarginContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Panel3/MarginContainer/HBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="Panel3/MarginContainer/HBoxContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="Panel3/MarginContainer/HBoxContainer/TickButton" to="." method="_on_tick_button_pressed"]

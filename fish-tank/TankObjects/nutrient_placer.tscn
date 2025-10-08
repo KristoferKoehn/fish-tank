@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2a7k5bpkv7c6"]
+
+[ext_resource type="Script" uid="uid://bdk7s04fxfd4y" path="res://fish-tank/TankObjects/nutrient_placer.gd" id="1_37bqd"]
+[ext_resource type="Material" uid="uid://vctrufnm6tlt" path="res://fish-tank/assets/materials/nutrient_placer.tres" id="2_iqurp"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_iqurp"]
+material = ExtResource("2_iqurp")
+top_radius = 0.3
+bottom_radius = 0.3
+height = 1.0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_37bqd"]
+radius = 0.3
+
+[node name="NutrientPlacer" type="Node3D" node_paths=PackedStringArray("cylinder", "hitbox", "hitshape", "light")]
+script = ExtResource("1_37bqd")
+cylinder = NodePath("MeshInstance3D")
+hitbox = NodePath("Area3D")
+hitshape = NodePath("Area3D/CollisionShape3D")
+color = Color(1, 0, 0, 1)
+light = NodePath("OmniLight3D")
+left = "left"
+right = "right"
+up = "up"
+down = "down"
+accept = "accept"
+cancel = "cancel"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+instance_shader_parameters/color = Color(1, 0, 0, 1)
+mesh = SubResource("CylinderMesh_iqurp")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_37bqd")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16681284, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 0.245
+omni_range = 1.5574282
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

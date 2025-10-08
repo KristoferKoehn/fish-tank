@@ -7,6 +7,7 @@ class_name PlantData
 @export_storage var stage_nutrients : Array[Dictionary] = []
 @export_storage var environment_nutrient : Array[Dictionary] = []
 
+@export var price : int = 0
 @export_range(0, 40, 1) var stages : int = 1 :
 	set(value):
 		stages = value
@@ -28,7 +29,7 @@ func _get_property_list() -> Array[Dictionary]:
 	var properties : Array[Dictionary] = []
 	for i in plant_stages.size():
 		properties.append(add_subgroup("Stage %s" % i)) 
-		properties.append(add_property_enum_from_dir("plant_model %s" % i, TYPE_STRING, PROPERTY_USAGE_EDITOR, PROPERTY_HINT_ENUM, "res://fish-tank/assets/models/", ".obj"))
+		properties.append(add_property_enum_from_dir("plant_model %s" % i, TYPE_STRING, PROPERTY_USAGE_EDITOR, PROPERTY_HINT_ENUM, "res://fish-tank/PlantScenes/", ".tscn"))
 		properties.append(add_property("stage_ticks %s" % i, TYPE_INT, PROPERTY_USAGE_EDITOR, PROPERTY_HINT_RANGE, "1,50"))
 		var dict_enum_string : String = ""
 		var dir = "res://fish-tank/NutrientTypes/"
